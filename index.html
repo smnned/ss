@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ConcreteFlow — заявки бетонного завода</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="app-header">
+        <h1>ConcreteFlow</h1>
+        <p>Создание заявок менеджером бетонного завода</p>
+      </header>
+
+      <section class="telegram-settings">
+        <h2>Интеграция с Telegram</h2>
+        <form id="telegram-form" class="telegram-form">
+          <label>
+            Bot Token
+            <input id="bot-token" type="password" placeholder="123456:ABC..." />
+          </label>
+          <label>
+            Chat ID канала/чата
+            <input id="chat-id" type="text" placeholder="-1001234567890" />
+          </label>
+          <button type="submit" class="secondary-btn">Сохранить Telegram-настройки</button>
+        </form>
+        <p id="telegram-status" class="telegram-status"></p>
+      </section>
+
+      <form id="request-form" class="request-form">
+        <div class="form-grid">
+          <label>
+            Клиент
+            <input id="customer" type="text" placeholder="ООО СтройПроект" required />
+          </label>
+
+          <label>
+            Контактный телефон
+            <input id="phone" type="tel" placeholder="+7 (900) 000-00-00" required />
+          </label>
+
+          <label>
+            Ответственный менеджер
+            <select id="manager" required>
+              <option value="">Выберите менеджера</option>
+              <option value="Иванов И.И.">Иванов И.И.</option>
+              <option value="Петров П.П.">Петров П.П.</option>
+              <option value="Сидорова А.А.">Сидорова А.А.</option>
+            </select>
+          </label>
+
+          <label>
+            Диспетчер
+            <select id="dispatcher" required>
+              <option value="">Выберите диспетчера</option>
+              <option value="Кузнецов К.К.">Кузнецов К.К.</option>
+              <option value="Орлова М.В.">Орлова М.В.</option>
+              <option value="Смирнов Д.О.">Смирнов Д.О.</option>
+            </select>
+          </label>
+
+          <label>
+            Водитель
+            <select id="driver" required>
+              <option value="">Выберите водителя</option>
+              <option value="Газель — Сергеев Н.В.">Газель — Сергеев Н.В.</option>
+              <option value="КамАЗ — Федоров А.И.">КамАЗ — Федоров А.И.</option>
+              <option value="MAN — Егоров Р.С.">MAN — Егоров Р.С.</option>
+            </select>
+          </label>
+
+          <label>
+            Марка бетона
+            <select id="grade" required>
+              <option value="">Выберите марку</option>
+              <option value="М200">М200</option>
+              <option value="М250">М250</option>
+              <option value="М300">М300</option>
+              <option value="М350">М350</option>
+              <option value="М400">М400</option>
+            </select>
+          </label>
+
+          <label>
+            Объём (м³)
+            <input id="volume" type="number" min="1" step="0.5" placeholder="10" required />
+          </label>
+
+          <label>
+            Дата отгрузки
+            <input id="delivery-date" type="date" required />
+          </label>
+
+          <label>
+            Время отгрузки
+            <input id="delivery-time" type="time" required />
+          </label>
+
+          <label class="full-width">
+            Адрес объекта
+            <input id="address" type="text" placeholder="г. Казань, ул. Примерная, д. 10" required />
+          </label>
+
+          <label class="checkbox-label">
+            <input id="pump" type="checkbox" />
+            Нужен бетононасос
+          </label>
+
+          <label class="full-width">
+            Комментарий
+            <textarea id="comment" rows="3" placeholder="Особые условия въезда, контакт на объекте..."></textarea>
+          </label>
+        </div>
+
+        <button type="submit" class="primary-btn">Создать заявку</button>
+      </form>
+
+      <section class="toolbar">
+        <div id="stats">Всего заявок: 0</div>
+        <select id="status-filter" aria-label="Фильтр по статусу">
+          <option value="all">Все статусы</option>
+          <option value="Новая">Новая</option>
+          <option value="Подтверждена">Подтверждена</option>
+          <option value="Выполнена">Выполнена</option>
+        </select>
+      </section>
+
+      <ul id="request-list" class="request-list"></ul>
+
+      <section class="history-section">
+        <div class="history-head">
+          <h2>История заявок</h2>
+          <select id="history-filter" aria-label="Фильтр истории по статусу">
+            <option value="all">Все статусы</option>
+          </select>
+        </div>
+        <ul id="history-list" class="history-list"></ul>
+      </section>
+    </main>
+
+    <template id="request-template">
+      <li class="request-item">
+        <div class="request-head">
+          <h2 class="request-title"></h2>
+          <span class="status-badge"></span>
+        </div>
+        <p class="request-meta"></p>
+        <p class="request-team"></p>
+        <p class="request-address"></p>
+        <p class="request-comment"></p>
+        <div class="request-actions">
+          <button class="status-btn" type="button">Сменить статус</button>
+          <button class="telegram-btn" type="button">Отправить в Telegram</button>
+          <button class="notify-btn" type="button">Уведомить клиента</button>
+          <button class="delete-btn" type="button">Удалить</button>
+        </div>
+      </li>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
