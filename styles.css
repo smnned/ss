@@ -1,0 +1,216 @@
+:root {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: #102033;
+  background: #eff4f9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 24px;
+}
+
+.app {
+  width: min(980px, 100%);
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 20px 45px rgb(16 32 51 / 10%);
+}
+
+.app-header h1 {
+  margin: 0;
+}
+
+.app-header p {
+  margin: 8px 0 20px;
+  color: #4a5b6d;
+}
+
+.telegram-settings,
+.request-form,
+.history-section {
+  border: 1px solid #dde6ef;
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.telegram-settings {
+  margin-bottom: 14px;
+  background: #f8fbff;
+}
+
+.telegram-settings h2,
+.history-section h2 {
+  margin: 0 0 12px;
+  font-size: 1.1rem;
+}
+
+.telegram-form,
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+label {
+  display: grid;
+  gap: 6px;
+  font-weight: 600;
+  color: #2d3d4f;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+input,
+select,
+textarea,
+button {
+  font: inherit;
+}
+
+input,
+select,
+textarea {
+  border: 1px solid #c9d7e5;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+
+.primary-btn,
+.secondary-btn {
+  margin-top: 14px;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  padding: 10px 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.primary-btn { background: #1f6feb; }
+.secondary-btn { background: #475569; }
+
+.telegram-status {
+  margin: 10px 0 0;
+  font-size: 0.92rem;
+  color: #334155;
+  word-break: break-word;
+}
+
+.telegram-status[data-type='success'] { color: #0f6b3a; }
+.telegram-status[data-type='warning'] { color: #8a5a00; }
+.telegram-status[data-type='error'] { color: #a42222; }
+
+.toolbar {
+  margin: 18px 0 12px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.request-list,
+.history-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.request-item,
+.history-item {
+  border: 1px solid #d9e3ee;
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.request-head,
+.history-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.request-title {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  background: #e6f0ff;
+  color: #18499a;
+}
+
+.status-badge[data-status='Подтверждена'] { background: #fff4da; color: #7c5500; }
+.status-badge[data-status='Выполнена'] { background: #daf7e8; color: #0f6b3a; }
+
+.request-meta,
+.request-team,
+.request-address,
+.request-comment {
+  margin: 10px 0 0;
+  color: #34475a;
+}
+
+.request-actions {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.status-btn,
+.telegram-btn,
+.notify-btn,
+.delete-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.status-btn { background: #eef4ff; color: #1c55b2; }
+.telegram-btn { background: #e4f6ff; color: #0c6e93; }
+.notify-btn { background: #e8f7e8; color: #1f7a1f; }
+.delete-btn { background: #ffe6e6; color: #a42222; }
+
+.history-section {
+  margin-top: 18px;
+}
+
+.history-status {
+  font-weight: 700;
+}
+
+@media (max-width: 760px) {
+  .form-grid,
+  .telegram-form {
+    grid-template-columns: 1fr;
+  }
+
+  .toolbar,
+  .history-head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
